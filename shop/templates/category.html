@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <img src="{% static 'images/shopuz.png' %}" height="350px" style="background-color: #40E0D0;">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto my-2 text-center">
+                <h1 class="text-capitalize fw-bold">
+                    our categories
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for category in links %}
+                <div class="col-9 mx-auto col-md-3 col-lg-3 mb-5">
+                    <div class="card h-100 ">
+                        <div class="p-4">
+                            <a href="{{category.get_url}}"><img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}"  height="200px"></a>
+
+                        </div>
+                        <div class="card-body"></div>
+                        <div class="card-footer">
+                            <p class="card-text fw-bold mb-0">{{ category.name }}</p>
+<!--                            <h5 class="text-info mb-0 fst-italic">{{ category.price }}</h5>-->
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
